@@ -12,7 +12,9 @@ import DayListItem from "components/DayListItem";
 import DayList from "components/DayList";
 import InterviewerListItem from "components/InterviewerListItem";
 import InterviewerList from "components/InterviewerList"; 
-import Header from "Appointment/Header.js"
+import Header from "components/Appointment/Header"
+import Empty from "components/Appointment/Empty";
+
 
 
 storiesOf("Button", module)
