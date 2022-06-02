@@ -4,14 +4,34 @@ import Show from "./Show";
 import Empty from "./Empty";
 import useVisualMode from "../../hooks/useVisualMode";
 import Form from "./Form";
+import Status from "./Status";
+
 
 export default function Appointment(props) {
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
-  const CREATE = "CREATE"
+  const CREATE = "CREATE";
+  const SAVING = "SAVING";
+
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
+
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+    transition(SAVING);
+
+    //in Application.js, we used return axios which will return a promise, so we need to use .then() here,  .then uses an anonymous callback function
+    props.bookInterview(props.id,interview).then(()=>{
+
+      transition(SHOW);
+    }
+    );
+  }
+
   return (
     <article className="appointment" >
       <Header time={props.time}/>
@@ -23,8 +43,15 @@ export default function Appointment(props) {
       />
       )}
       {mode === CREATE && (
-        <Form interviewer={props.interviewer} interviewers={props.interviewers} onCancel={() => back(EMPTY)}/>
-        )}
+      <Form
+         interviewer={props.interviewer}
+         interviewers={props.interviewers}
+         onCancel={() => back(EMPTY)}
+         bookInterview={props.bookInterview} 
+         onSave={save}/>
+      )}
+      {mode === SAVING && (
+        <Status />        )}
       
       </article>
   )
