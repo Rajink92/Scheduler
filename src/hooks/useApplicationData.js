@@ -110,13 +110,8 @@ export default function useApplicationData() {
 
     const url =`http://localhost:8001/api/appointments/${id}`;
 
-    let req={
-      url,
-      method: 'DELETE',
-      data:appointment
-    }
-    return axios(req).then(response =>{
-      setState({...state, appointments, days});
+    return axios.put(url, appointment).then(() => {
+      setState({...state, appointments,days});
     })
 
   }
