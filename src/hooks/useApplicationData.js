@@ -77,15 +77,15 @@ export default function useApplicationData() {
 
       const url =`http://localhost:8001/api/appointments/${id}`;
 
-      let req={
-        url,
-        method: 'PUT',
-        data: appointment
-      }
-      return axios(req).then(response => {
-        setState({...state, appointments,days})
-      })
-    }
+    //   let req={
+    //     url,
+    //     method: 'PUT',
+    //     data: appointment
+    //   }
+    //   return axios(req).then(response => {
+    //     setState({...state, appointments,days})
+    //   })
+    // }
 
 
   function cancelInterview(id){
@@ -110,10 +110,12 @@ export default function useApplicationData() {
 
     const url =`http://localhost:8001/api/appointments/${id}`;
 
-    return axios.put(url, appointment).then(() => {
-      setState({...state, appointments,days});
-    })
-
+  //   return axios.put(url, appointment).then(() => {
+  //     setState({...state, appointments,days});
+  //   })
+  return axios.delete(url, appointment).then(()=>{
+    setState({...state, appointments, days });
+  });
   }
 
   return {
@@ -123,7 +125,9 @@ export default function useApplicationData() {
     cancelInterview
   }
 
-
-
-
-} 
+}
+state, 
+setDay,
+bookInterview,
+cancelInterview
+}
