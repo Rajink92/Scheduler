@@ -18,9 +18,9 @@ export default function useApplicationData() {
   };
 
   useEffect(()=>{
-    const dayURL = "http://localhost:8001/api/days";
-    const appointmentURL = "http://localhost:8001/api/appointments";
-    const interviewersURL = "http://localhost:8001/api/interviewers";
+    const dayURL = "/api/days";
+    const appointmentURL = "/api/appointments";
+    const interviewersURL = "/api/interviewers";
     
     Promise.all([
       axios.get(dayURL),
@@ -75,17 +75,9 @@ export default function useApplicationData() {
       let days = state.days
       days[dayOfWeek] = day;
 
-      const url =`http://localhost:8001/api/appointments/${id}`;
+      const url =`/api/appointments/${id}`;
 
-    //   let req={
-    //     url,
-    //     method: 'PUT',
-    //     data: appointment
-    //   }
-    //   return axios(req).then(response => {
-    //     setState({...state, appointments,days})
-    //   })
-    // }
+  
 
 
   function cancelInterview(id){
@@ -126,8 +118,4 @@ export default function useApplicationData() {
   }
 
 }
-state, 
-setDay,
-bookInterview,
-cancelInterview
 }
