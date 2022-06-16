@@ -15,10 +15,10 @@ export default function InterviewerListItem(props) {
     <li className={interviewerListItemClass} onClick={props.setInterviewer} data-testid="day">
       <img
         className="interviewers__item-image"
-        src={props.avatar}
-        alt={props.name}
+        src={avatar}
+        alt={name}
       />
-      {props.selected && props.name}
+      {selected && name}
     </li>
   );
 

@@ -76,6 +76,10 @@ export default function useApplicationData() {
       days[dayOfWeek] = day;
 
       const url =`/api/appointments/${id}`;
+      return axios.put(url, appointment).then(() => {
+        setState({...state, appointments,days});
+      })
+    }
 
   
 
@@ -102,9 +106,7 @@ export default function useApplicationData() {
 
     const url =`http://localhost:8001/api/appointments/${id}`;
 
-  //   return axios.put(url, appointment).then(() => {
-  //     setState({...state, appointments,days});
-  //   })
+
   return axios.delete(url, appointment).then(()=>{
     setState({...state, appointments, days });
   });
@@ -118,4 +120,4 @@ export default function useApplicationData() {
   }
 
 }
-}
+
