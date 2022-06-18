@@ -44,6 +44,7 @@
     "@testing-library/react-hooks": "^8.0.0",
     "babel-loader": "^8.0.5",
     "cypress": "^10.1.0",
+    "jest-mock-axios": "^4.6.1",
     "prop-types": "^15.8.1",
     "react-test-renderer": "^16.9.0",
     "sass": "^1.51.0"

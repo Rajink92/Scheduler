@@ -1,3 +1,5 @@
+console.log ("loading mock")
+
 const fixtures = {
   days: [
     {
@@ -52,11 +54,8 @@ const fixtures = {
     }
   }
 };
-
-
 export default {
-  get: jest.fn(url => {
-    
+  get: url => {
     if (url === "/api/days") {
       return Promise.resolve({
         status: 200,
@@ -66,21 +65,26 @@ export default {
     }
 
     if (url === "/api/appointments") {
+      /* Resolve appointments data */
       return Promise.resolve({
         status: 200,
         statusText: "OK",
-        data:fixtures.appointments
+        data: fixtures.appointments
       });
     }
 
     if (url === "/api/interviewers") {
+      /* Resolve interviewers data */
       return Promise.resolve({
         status: 200,
         statusText: "OK",
         data: fixtures.interviewers
       });
     }
-  }),
+  },
+
+
+
   put: jest.fn(url => {
     return Promise.resolve({
       status: 204,
@@ -95,3 +99,30 @@ export default {
     })
   })
 } 
+// export default {
+//   get: jest.fn(url => {
+//     console.log ("mocking actions get ", url)
+//     if (url === "/api/days") {
+//       return Promise.resolve({
+//         status: 200,
+//         statusText: "OK",
+//         data: fixtures.days
+//       });
+//     }
+
+//     if (url === "/api/appointments") {
+//       return Promise.resolve({
+//         status: 200,
+//         statusText: "OK",
+//         data:fixtures.appointments
+//       });
+//     }
+
+//     if (url === "/api/interviewers") {
+//       return Promise.resolve({
+//         status: 200,
+//         statusText: "OK",
+//         data: fixtures.interviewers
+//       });
+//     }
+//   }),

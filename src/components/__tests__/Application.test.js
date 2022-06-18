@@ -1,21 +1,21 @@
 import React from "react";
-
-import { render, cleanup, waitForElement, fireEventgetByText, prettyDOM,getAllByTestId,getByAltText,getByPlaceholderText,queryByText, queryByAltText} from "@testing-library/react";
-
+import { render, cleanup, waitForElement, fireEvent,getByText, prettyDOM,getAllByTestId,getByAltText,getByPlaceholderText,queryByText, queryByAltText} from "@testing-library/react";
 import Application from "components/Application";
 import axios from "axios";
+jest.mock("axios");
+
 
 
 afterEach(cleanup);
 
 describe("Application", () => {
   it("changes the schedule when a new day is selected", async () => {
-    const { getByText } = render(<Application />);
+    const { container } = render(<Application />);
 
-    await waitForElement(() => getByText("Monday"));
+    await waitForElement(() => getByText(container, "Monday"));
 
-    fireEvent.click(getByText("Tuesday"));
-    expect(getByText("Leopold Silvers")).toBeInTheDocument();
+    fireEvent.click(getByText(container, "Tuesday"));
+    expect(getByText(container, "Leopold Silvers")).toBeInTheDocument();
   });
   it("loads data, books an interview and reduces the spots remaining for Monday by 1", async () => {
     const { container,debug } = render(<Application />);
@@ -24,7 +24,6 @@ describe("Application", () => {
   
     const appointments = getAllByTestId(container, "appointment");
     const appointment = appointments[0];
-    console.log("container==>",prettyDOM(container))
   
     fireEvent.click(getByAltText(appointment, "Add"));
   
