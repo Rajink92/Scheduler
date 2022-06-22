@@ -60,7 +60,7 @@ it("loads data, books an interview and reduces the spots remaining for Monday by
 
   fireEvent.click(queryByAltText(appointment, "Delete"));
   // 4. Check that the confirmation message is shown.
-  expect(getByText(appointment, "Are you sure you would like to delete?")).toBeInTheDocument();
+  expect(getByText(appointment, "Confirm deletion?")).toBeInTheDocument();
 
   // 5. Click the "Confirm" button on the confirmation.
   fireEvent.click(queryByText(appointment, "Confirm"));
