@@ -91,8 +91,8 @@ return (
 
     {mode === EDIT && (
       <Form
-      name={props.name ? props.name : props.interview.student}
-      interviewer={props.interview.interviewer}
+      name={props.interview.student}
+      interviewer={props.interview.interviewer.id}
   
       interviewers={props.interviewers}
       onSave={save}
