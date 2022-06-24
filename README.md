@@ -9,6 +9,11 @@ Install dependencies with `npm install`.
 ```sh
 npm start
 ```
+## Running Scheduler Api Server
+
+```sh
+npm start
+```
 
 ## Running Jest Test Framework
 
