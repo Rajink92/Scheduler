@@ -12,6 +12,7 @@ npm start
 ## Running Scheduler Api Server
 
 ```sh
+Required to run simultaneously in a seperate server
 npm start
 ```
 
