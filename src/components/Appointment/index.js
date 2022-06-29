@@ -10,7 +10,6 @@ import Status from "./Status";
 import Confirm from "./Confirm";
 import Error from "./Error";
 
-
 export default function Appointment(props) {
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
@@ -21,8 +20,6 @@ export default function Appointment(props) {
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
   const DELETING = "DELETING";
-
-
 
 const { mode, transition, back } = useVisualMode(
   props.interview ? SHOW : EMPTY
@@ -50,9 +47,7 @@ function remove(){
     transition(ERROR_DELETE,true)
 
    });
-
 }
-
 return (
   <article className="appointment" data-testid="appointment">
     <Header time={props.time}/>
@@ -118,8 +113,6 @@ return (
         onClose={back}
       />
     )}
-    
-
   </article>
 )
     }

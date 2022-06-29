@@ -47,9 +47,7 @@ it("loads data, books an interview and reduces the spots remaining for Monday by
 
 
   expect(getByText(day, "no spots remaining")).toBeInTheDocument();
-
 });
-
 
 it("loads data, books an interview and reduces the spots remaining for Monday by 1", async () => {
   //  1. Render the Application.
@@ -79,8 +77,6 @@ it("loads data, books an interview and reduces the spots remaining for Monday by
     );
   // 8. Check that the DayListItem with the text "Monday" also has the text "2 spots remaining".
   expect(getByText(day, "1 spot remaining")).toBeInTheDocument();//2 spots remaining failes the test
-
-  // debug();
 
 });
 

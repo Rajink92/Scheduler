@@ -9,15 +9,10 @@ import {getAppointmentsForDay, getInterview, getInterviewersForDay} from "../hel
 
 export default function Application(props) {
   const { state, setDay, bookInterview, cancelInterview } = useApplicationData();
-
-
-
   let appointments = getAppointmentsForDay(state, state.day);
   const schedule = appointments.map((appointment) => {
   const interview = getInterview(state, appointment.interview);
   const interviewers = getInterviewersForDay(state,state.day)
-
-
   return (
     <Appointment
       key={appointment.id}
@@ -43,7 +38,7 @@ export default function Application(props) {
 <nav className="sidebar__menu">
 <DayList
   days={state.days}
-  day={state.day}
+  value={state.day}
   setDay={setDay}
 />
 </nav>
@@ -54,7 +49,6 @@ export default function Application(props) {
 />
       </section>
       <section className="schedule">
-        
         {schedule}
         <Appointment key="last" time="5pm" />
         </section>

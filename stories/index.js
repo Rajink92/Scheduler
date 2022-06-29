@@ -1,13 +1,8 @@
 import React, { Fragment } from 'react'
-
-
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-
 import "index.scss";
 import Appointment from "components/Appointment/index.js";
-
-
 import Button from "components/Button";
 import DayListItem from "components/DayListItem";
 import DayList from "components/DayList";
@@ -20,8 +15,6 @@ import Confirm from "components/Appointment/Confirm";
 import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
 import Form from "components/Appointment/Form";
-
-
 
 storiesOf("Button", module)
   .addParameters({
@@ -40,15 +33,12 @@ storiesOf("Button", module)
   ));
 
   storiesOf("DayListItem", module) //Initiates Storybook and registers our DayListItem component
-  .addParameters({
-    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-  }) // Provides the default background color for our component
+  .addParameters({backgrounds: [{ name: "dark", value: "#222f3e", default: true }]}) // Provides the default background color for our component
   .add("Unselected", () => <DayListItem name="Monday" spots={5} />) // To define our stories, we call add() once for each of our test states to generate a story
   .add("Selected", () => <DayListItem name="Monday" spots={5} selected />) 
   .add("Full", () => <DayListItem name="Monday" spots={0} />)
-  .add("Clickable", () => (
-    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} /> // action() allows us to create a callback that appears in the actions panel when clicked
-  ));
+  .add("Clickable", () => (<DayListItem name="Tuesday" setDay={action("setDay")} spots={5} /> // action() allows us to create a callback that appears in the actions panel when clicked
+));
   
   const days = [
     {
@@ -114,7 +104,6 @@ storiesOf("Button", module)
           setInterviewer={() => action("setInterviewer")(interviewer.id)}
         />
       ));
-
       const interviewers = [
         { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
         { id: 2, name: "Tori Malcolm", avatar: "https://i.imgur.com/Nmx0Qxo.png" },
@@ -122,8 +111,7 @@ storiesOf("Button", module)
         { id: 4, name: "Cohana Roy", avatar: "https://i.imgur.com/FK8V841.jpg" },
         { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
       ];
-      
-      storiesOf("InterviewerList", module)
+storiesOf("InterviewerList", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
   })
@@ -132,7 +120,7 @@ storiesOf("Button", module)
       interviewers={interviewers}
     />
   ))
-  .add("Selected", () => (
+  .add("Preselected", () => (
     <InterviewerList
       interviewers={interviewers}
       value={3}
@@ -144,7 +132,6 @@ storiesOf("Button", module)
       onChange={action("setInterviewer")}
     />
   ));
-
   storiesOf("Appointment", module)
   .addParameters({
     backgrounds: [{ name: "white", value: "#fff", default: true }]
@@ -179,6 +166,6 @@ storiesOf("Button", module)
         time="4pm"
         interview={{ student: "Lydia Miller-Jones", interviewer }}
       />
-      <Appointment time="5pm" />
+      <Appointment id="last" time="5pm" />
     </Fragment>
   ))
